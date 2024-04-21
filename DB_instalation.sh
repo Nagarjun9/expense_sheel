@@ -15,10 +15,10 @@ read mysql_root_password
 VALIDATION(){
     if [ $1 -ne 0 ]
     then 
-        echo "$2...failed"
+        echo -e "$Y $2...failed $N"
         exit 1
     else
-        echo "$2...success"
+        echo -e "$Y $2...success $N"
     fi 
 }
 
@@ -27,7 +27,7 @@ then
     echo -e "$R you are not a super user please use root crediantials $N"
     exit 1
 else 
-    echo "you are a superuser"
+    echo -e  "$G you are a superuser $N"
 fi
 
 dnf install mysql-server -y &>>$LOGFILE
@@ -39,11 +39,13 @@ VALIDATION $? "enable of mysql"
 systemctl start mysqld &>>$LOGFILE
 VALIDATION $? "start of mysql"
 
-mysql -h db.daws78s.cloud -uroot -p${mysql_root_password} -e 'show databases;' 
-if [ $? -ne 0 ]
-then 
-    echo "mysql_secure_installation --set-root-pass ${mysql_root_password}"
-    VALIDATION $? "MY SQL ROOT PASSWORD SETUP"
-else 
-    echo "my sql root password already set...skiping"
-fi 
+echo "mysql_secure_installation --set-root-pass ${mysql_root_password}"
+VALIDATION $? "mysql root password alredy set"
+
+#mysql -h db.daws78s.cloud -uroot -p${mysql_root_password} -e 'show databases;' 
+#if [ $? -ne 0 ]
+##   echo "mysql_secure_installation --set-root-pass ${mysql_root_password}"
+#    VALIDATION $? "MY SQL ROOT PASSWORD SETUP"
+#else 
+#    echo "my sql root password already set...skiping"
+#fi 
