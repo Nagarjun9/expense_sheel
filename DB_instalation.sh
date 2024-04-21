@@ -39,10 +39,10 @@ VALIDATION $? "enable of mysql"
 systemctl start mysqld &>>$LOGFILE
 VALIDATION $? "start of mysql"
 
-mysql -h db.daws78s.cloud -uroot -p$(mysql_root_password) -e 'show databases;' 
+mysql -h db.daws78s.cloud -uroot -p${mysql_root_password} -e 'show databases;' 
 if [ $? -ne 0 ]
 then 
-    echo "mysql_secure_installation --set-root-pass $(mysql_root_password)"
+    echo "mysql_secure_installation --set-root-pass ${mysql_root_password}"
     VALIDATION $? "MY SQL ROOT PASSWORD SETUP"
 else 
     echo "my sql root password already set...skiping"
