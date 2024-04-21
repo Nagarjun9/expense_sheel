@@ -53,12 +53,12 @@ fi
 mkdir -p /app &>>$LOGFILE
 VALIDATION $? "directory created"
 
-sudo curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip &>>$LOGFILE
+curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip &>>$LOGFILE
 VALIDATION $? "downloaded backendcode"
 
 cd /app
 rm -rf *
-sudo unzip /tmp/backend.zip &>>$LOGFILE
+unzip /tmp/backend.zip &>>$LOGFILE
 VALIDATION $? "unzip the code in app folder"
 
 cd /app
