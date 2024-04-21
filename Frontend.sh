@@ -16,6 +16,7 @@ VALIDATION(){
         exit 1
     else 
         echo "$R $2....success $N"
+     file   
 }
 
 if [ $USERID -ne 0 ]
@@ -24,6 +25,7 @@ then
     exit 1
 else
     echo "$G you are a superuser $N"
+fi
 
 
 dnf install nginx -y &>>LOGFILE
