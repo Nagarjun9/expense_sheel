@@ -1,6 +1,6 @@
 #!/bib/bash
 
-USERID=$(ud -u)
+USERID=$(id -u)
 
 
 VALIDATION(){
