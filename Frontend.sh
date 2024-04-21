@@ -33,31 +33,31 @@ else
 fi
 
 
-dnf install nginx -y &>>LOGFILE
+dnf install nginx -y &>>$LOGFILE
 VALIDATION $? "install nginx"
 
-systemctl enable nginx &>>LOGFILE
+systemctl enable nginx &>>$LOGFILE
 VALIDATION $? "enable nginx"
 
-systemctl start nginx &>>LOGFILE
+systemctl start nginx &>>$LOGFILE
 VALIDATION $? "start nginx"
 
-rm -rf /usr/share/nginx/html/* &>>LOGFILE
+rm -rf /usr/share/nginx/html/* &>>$LOGFILE
 VALIDATION $? "Remove the default content "
 
-curl -o /tmp/frontend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip &>>LOGFILE
+curl -o /tmp/frontend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip &>>$LOGFILE
 VALIDATION $? "Download the frontend content "
 
 cd /usr/share/nginx/html
-unzip /tmp/frontend.zip &>>LOGFILE
+unzip /tmp/frontend.zip &>>$LOGFILE
 VALIDATION $? "Extract the frontend content"
 
 # need to create expense.conf file update backend ip infomation 
 
-cp /home/ec2-user/expense_sheel/expense.conf /etc/nginx/default.d/ &>>LOGFILE
+cp /home/ec2-user/expense_sheel/expense.conf /etc/nginx/default.d/ &>>$LOGFILE
 VALIDATION $? "Extract the frontend content"
 
-systemctl restart nginx &>>LOGFILE
+systemctl restart nginx &>>$LOGFILE
 VALIDATION $? "restart the nginx"
 
 
