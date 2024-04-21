@@ -4,6 +4,11 @@ USERID=$(id -u)
 TIMESTAMP=$(date +%F-%H-%M-%S)
 SCRIPT_NAME=$(echo $0 |cut -d "." -f1)
 LOGFILE=/tmp/$SCRIPT_NAME-$TIMESTAMP.log 
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+B="\e[34m"
+N="\e[0m"
 
 echo "please enter the password"
 read "my_password"
@@ -11,19 +16,19 @@ read "my_password"
 VALIDATION(){
     if [ $1 -ne 0 ]
     then 
-        echo "$2...failed"
+        echo -e "$R $2...failed $N"
         exit 1
     else 
-        echo "$2...success"
+        echo -e "$G $2...success $N"
     fi 
 }
 
 if [ $USERID -ne 0 ]
 then 
-    echo "you are not a superuser use sudo"
+    echo -e "$Y you are not a superuser use sudo $N"
     exit 1
 else 
-    echo "you are a superuser"
+    echo -e "$B you are a superuser $N"
 fi 
 
 
