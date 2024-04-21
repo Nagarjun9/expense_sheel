@@ -18,7 +18,7 @@ VALIDATION(){
         echo "$2...failed"
         exit 1
     else
-        echo "$2...failed"
+        echo "$2...success"
     fi 
 }
 
@@ -33,10 +33,10 @@ fi
 dnf install mysql-server -y &>>$LOGFILE
 VALIDATION $? "instalation of mysql"
 
-systemctl enable mysqld
+systemctl enable mysqld &>>$LOGFILE
 VALIDATION $? "enable of mysql"
 
-systemctl start mysqld
+systemctl start mysqld &>>$LOGFILE
 VALIDATION $? "start of mysql"
 
 mysql -h db.daws78s.cloud -uroot -p$(mysql_root_password) -e 'show database;' 
