@@ -57,7 +57,7 @@ sudo curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/
 VALIDATION $? "downloaded backendcode"
 
 cd /app
-sudo unzip /app/backend.zip &>>$LOGFILE
+sudo unzip /tmp/backend.zip &>>$LOGFILE
 VALIDATION $? "unzip the code in app folder"
 
 cd /app
