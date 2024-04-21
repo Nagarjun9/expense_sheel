@@ -22,7 +22,7 @@ VALIDATION(){
 
 if [ $USERID -ne 0 ]
 then 
-    echo -e "$R you are not a super user please user root crediationals $N"
+    echo -e "$R you are not a super user please use root crediationals $N"
     exit 1
 else
     echo "$G you are a superuser $N"
