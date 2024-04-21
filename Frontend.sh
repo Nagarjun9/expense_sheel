@@ -16,7 +16,8 @@ VALIDATION(){
         exit 1
     else 
         echo "$R $2....success $N"
-     file   
+     file 
+     fi   
 }
 
 if [ $USERID -ne 0 ]
