@@ -79,7 +79,7 @@ VALIDATION $? "enable the backend"
 dnf install mysql -y &>>$LOGFILE
 VALIDATION $? "install mysql"
 
-mysql -h db.daws78s.cloud -uroot -p$(my_root_password) < /app/schema/backend.sql &>>$LOGFILE
+mysql -h db.daws78s.cloud -uroot -p${my_root_password} < /app/schema/backend.sql &>>$LOGFILE
 VALIDATION $? "load the data"
 
 
