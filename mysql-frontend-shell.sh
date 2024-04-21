@@ -17,6 +17,7 @@ VALIDATION(){
         exit 1
     else
         echo -e "$B $2...success $N"
+     fi    
 }
 
 
