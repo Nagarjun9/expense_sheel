@@ -42,7 +42,7 @@ VALIDATION $? "enable nodejs"
 dnf install nodejs -y &>>$LOGFILE
 VALIDATION $? "instalation of nodejs"
 
-id expense 
+id expense &>>$LOGFILE
 if [ $? -ne 0 ]
 then 
     useradd expense &>>$LOGFILE
