@@ -15,7 +15,7 @@ VALIDATION(){
         echo -e "$R $2...failed $N"
         exit 1
     else 
-        echo "$R $2....success $N"
+        echo -e "$R $2....success $N"
      file 
      fi   
 }
@@ -25,7 +25,7 @@ then
     echo -e "$R you are not a super user please use root crediationals $N"
     exit 1
 else
-    echo "$G you are a superuser $N"
+    echo -e "$G you are a superuser $N"
 fi
 
 
