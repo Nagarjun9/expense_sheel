@@ -17,16 +17,16 @@ VALIDATION(){
         echo -e "$R $2...failed $N"
         exit 1
     else 
-        echo "$G $2...success $N"
+        echo -e "$G $2...success $N"
     fi 
 }
 
 if [ $USERID -ne 0 ]
 then 
-    echo "$Y you are not a superuser please user sudo $N "
+    echo -e "$Y you are not a superuser please user sudo $N "
     exit 1
 else
-     echo "$B you are a super user $N"
+     echo -e "$B you are a super user $N"
 fi
 
 dnf install mysql-server -y &>>$LOGFILE
