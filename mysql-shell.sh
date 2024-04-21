@@ -4,22 +4,28 @@ USERID=$(id -u)
 SCRIPT-NAME=$(echo $0 | cut -d "." -f1)
 TIMESTAMP=$(date +%F-%H-%M-%s)
 LOGFILE=/tmp/$SCRIPT_NAME-$TIMESTAMP.log
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+B="\e[34m"
+P="\e[35m"
+N="\e[0m"
 
 VALIDATION(){
     if [ $1 -ne 0 ]
     then 
-        echo "$2...failed"
+        echo -e "$R $2...failed $N"
         exit 1
     else 
-        echo "$2...success"
+        echo "$G $2...success $N"
 }
 
 if [ $USERID -ne 0 ]
 then 
-    echo "you are not a superuser please user sudo "
+    echo "$Y you are not a superuser please user sudo $N "
     exit 1
 else
-     echo "you are a super user"
+     echo "$B you are a super user $N"
 fi
 
 dnf install mysql-server -y &>>$LOGFILE
