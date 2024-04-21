@@ -11,6 +11,9 @@ B="\e[34m"
 P="\e[35m"
 N="\e[0m"
 
+echo "please enter password"
+read "my_root_passowrd"
+
 VALIDATION(){
     if [ $1 -ne 0 ]
     then 
@@ -31,3 +34,13 @@ fi
 
 dnf install mysql-server -y &>>$LOGFILE
 VALIDATION $? "install of mysql"
+
+systemctl enable mysqld &>>$LOGFILE
+VALIDATION $? "enable mysql"
+
+systemctl start mysqld &>>$LOGFILE
+VALIDATION $? "start mysql"
+
+
+mysql_secure_installation --set-root-pass ${my_root_passowrd} &>>$LOGFILE
+VALIDATION $? "setup the root password"
